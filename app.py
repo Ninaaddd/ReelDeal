@@ -10,7 +10,7 @@ load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
 # Set the page title
-st.set_page_config(page_title="Reel Deal")
+st.set_page_config(page_title="Reel Deal", page_icon=movie.png)
 
 
 def fetch_poster(movie_id):
@@ -18,7 +18,8 @@ def fetch_poster(movie_id):
     for i in range(5):  # Retry up to 5 times
         try:
             response = requests.get(url, timeout=10)
-            response.raise_for_status()  # Raise an HTTPError if the HTTP request returned an unsuccessful status code
+            # Raise an HTTPError if the HTTP request returned an unsuccessful status code
+            response.raise_for_status()
             data = response.json()
             poster_path = data['poster_path']
             full_path = f"https://image.tmdb.org/t/p/w500{poster_path}"
@@ -34,7 +35,8 @@ def fetch_poster(movie_id):
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
-    movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+    movies_list = sorted(list(enumerate(distances)),
+                         reverse=True, key=lambda x: x[1])[1:6]
     recommended_movies = []
     recommended_movies_posters = []
     for i in movies_list:
