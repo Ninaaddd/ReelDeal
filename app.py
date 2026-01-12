@@ -1,3 +1,4 @@
+from PIL import Image
 import streamlit as st
 import pickle
 import pandas as pd
@@ -10,7 +11,13 @@ load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
 # Set the page title
-st.set_page_config(page_title="Reel Deal", page_icon=movie.png)
+
+icon = Image.open("movie.png")
+
+st.set_page_config(
+    page_title="Reel Deal",
+    page_icon=icon
+)
 
 
 def fetch_poster(movie_id):
