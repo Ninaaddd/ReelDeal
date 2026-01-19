@@ -1,1 +1,36 @@
+# Environment variables
 .env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Data files (these will be in GitHub releases)
+data/
+*.pkl
+*.index
+similarity.pkl
+movies_dict.pkl
+vectorizer.pkl
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
