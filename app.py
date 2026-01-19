@@ -161,7 +161,8 @@ def main():
         selected_movie = st.selectbox(
             'Select a movie you like:',
             movies['title'].values,
-            index=0
+            index=None,
+            placeholder="Select a movie"
         )
 
     with col2:
