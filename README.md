@@ -4,6 +4,10 @@ A **content-based movie recommender system** that suggests similar movies based 
 
 ---
 
+## 🚀 Live Demo: [ReelDeal](https://reeldeal.streamlit.app/)
+
+---
+
 ## ✨ Features
 
 - **5000+ Movies** – Continuously growing catalog fetched from TMDb
