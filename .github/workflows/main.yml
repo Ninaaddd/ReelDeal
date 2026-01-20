@@ -1,0 +1,31 @@
+name: Update Movie Data
+
+on:
+  schedule:
+    - cron: "0 2 * * 0" # Every Sunday 2 AM UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python scripts/setup_nltk.py
+
+      - name: Update movie data
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GH_REPO }}
+          GITHUB_RELEASE_TAG: ${{ secrets.GH_RELEASE_TAG }}
+        run: python update_and_release.py
